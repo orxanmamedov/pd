@@ -1,8 +1,8 @@
 package com.orkhanmamedov.expressbank.controller.impl;
 
 import com.orkhanmamedov.expressbank.controller.DepositController;
-import com.orkhanmamedov.expressbank.deposit.request.AddDepositRequestDto;
-import com.orkhanmamedov.expressbank.dto.common.MessageResponseDto;
+import com.orkhanmamedov.expressbank.dto.common.response.MessageResponseDto;
+import com.orkhanmamedov.expressbank.dto.deposit.request.AddDepositRequestDto;
 import com.orkhanmamedov.expressbank.interceptor.AuthenticationHolder;
 import com.orkhanmamedov.expressbank.service.DepositService;
 import lombok.RequiredArgsConstructor;
@@ -23,8 +23,8 @@ public class DepositControllerImpl implements DepositController {
   @Override
   @PostMapping(ADD_DEPOSITS_URI)
   public MessageResponseDto addDeposit(@RequestBody AddDepositRequestDto dto) {
-    log.info("{openNewDeposit} -> Request to open new deposit");
-
-    return depositService.addDeposit(authenticationHolder.getUserId(), dto);
+    log.info("{addDeposit} -> Request to add deposit");
+    depositService.addDeposit(authenticationHolder.getUserId(), dto);
+    return new MessageResponseDto(MessageResponseDto.DEPOSIT_ADDED);
   }
 }

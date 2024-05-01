@@ -1,7 +1,7 @@
 package com.orkhanmamedov.expressbank.config;
 
-import com.orkhanmamedov.expressbank.dto.common.MessageResponseDto;
-import com.orkhanmamedov.expressbank.dto.common.ValidationExceptionResponseDto;
+import com.orkhanmamedov.expressbank.dto.common.response.MessageResponseDto;
+import com.orkhanmamedov.expressbank.dto.common.response.ValidationExceptionResponseDto;
 import com.orkhanmamedov.expressbank.exception.BusinessException;
 import com.orkhanmamedov.expressbank.exception.SecurityException;
 import com.orkhanmamedov.expressbank.exception.TechnicalException;

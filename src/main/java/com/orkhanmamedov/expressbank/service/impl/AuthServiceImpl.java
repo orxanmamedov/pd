@@ -2,7 +2,7 @@ package com.orkhanmamedov.expressbank.service.impl;
 
 import com.orkhanmamedov.expressbank.config.KeycloakProvider;
 import com.orkhanmamedov.expressbank.dto.auth.request.LoginRequestDto;
-import com.orkhanmamedov.expressbank.dto.auth.response.LoginResponseMessageDto;
+import com.orkhanmamedov.expressbank.dto.auth.response.LoginResponseDto;
 import com.orkhanmamedov.expressbank.exception.SecurityException;
 import com.orkhanmamedov.expressbank.service.AuthService;
 import javax.ws.rs.NotAuthorizedException;
@@ -23,13 +23,13 @@ public class AuthServiceImpl implements AuthService {
   private final KeycloakProvider keycloakProvider;
 
   @Override
-  public LoginResponseMessageDto login(LoginRequestDto dto) {
+  public LoginResponseDto login(LoginRequestDto dto) {
     log.info("{login} -> start login for user {}", dto.email());
 
     AccessTokenResponse response = getAccessToken(dto);
 
-    LoginResponseMessageDto result =
-        LoginResponseMessageDto.builder()
+    LoginResponseDto result =
+        LoginResponseDto.builder()
             .tokenType(response.getTokenType())
             .token(response.getToken())
             .refreshToken(response.getRefreshToken())

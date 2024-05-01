@@ -1,9 +1,8 @@
 package com.orkhanmamedov.expressbank.service;
 
-import com.orkhanmamedov.expressbank.deposit.request.AddDepositRequestDto;
-import com.orkhanmamedov.expressbank.dto.common.MessageResponseDto;
+import com.orkhanmamedov.expressbank.dto.deposit.request.AddDepositRequestDto;
 
 public interface DepositService {
 
-  MessageResponseDto addDeposit(final String userId, final AddDepositRequestDto dto);
+  void addDeposit(final String userId, final AddDepositRequestDto dto);
 }

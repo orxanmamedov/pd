@@ -2,7 +2,7 @@ package com.orkhanmamedov.expressbank.controller.impl;
 
 import com.orkhanmamedov.expressbank.controller.LoginController;
 import com.orkhanmamedov.expressbank.dto.auth.request.LoginRequestDto;
-import com.orkhanmamedov.expressbank.dto.auth.response.LoginResponseMessageDto;
+import com.orkhanmamedov.expressbank.dto.auth.response.LoginResponseDto;
 import com.orkhanmamedov.expressbank.service.AuthService;
 import javax.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -22,7 +22,7 @@ public class LoginControllerImpl implements LoginController {
 
   @Override
   @PostMapping(LOGIN_URI)
-  public LoginResponseMessageDto login(@RequestBody @Valid LoginRequestDto dto) {
+  public LoginResponseDto login(@RequestBody @Valid LoginRequestDto dto) {
 
     log.info("{login} -> Login request from user with email {}.", dto.email());
 

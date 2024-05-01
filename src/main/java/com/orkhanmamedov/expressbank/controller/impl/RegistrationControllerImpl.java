@@ -1,7 +1,7 @@
 package com.orkhanmamedov.expressbank.controller.impl;
 
 import com.orkhanmamedov.expressbank.controller.RegistrationController;
-import com.orkhanmamedov.expressbank.dto.common.MessageResponseDto;
+import com.orkhanmamedov.expressbank.dto.common.response.MessageResponseDto;
 import com.orkhanmamedov.expressbank.dto.user.request.UserRequestDto;
 import com.orkhanmamedov.expressbank.service.RegistrationService;
 import javax.validation.Valid;

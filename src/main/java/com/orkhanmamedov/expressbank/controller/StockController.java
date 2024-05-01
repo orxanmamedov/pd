@@ -1,7 +1,7 @@
 package com.orkhanmamedov.expressbank.controller;
 
-import com.orkhanmamedov.expressbank.dto.auth.response.LoginResponseMessageDto;
-import com.orkhanmamedov.expressbank.dto.common.MessageResponseDto;
+import com.orkhanmamedov.expressbank.dto.auth.response.LoginResponseDto;
+import com.orkhanmamedov.expressbank.dto.common.response.MessageResponseDto;
 import com.orkhanmamedov.expressbank.dto.stock.response.StockResponseDto;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -26,7 +26,7 @@ public interface StockController {
             content =
                 @Content(
                     mediaType = MediaType.APPLICATION_JSON_VALUE,
-                    schema = @Schema(implementation = LoginResponseMessageDto.class))),
+                    schema = @Schema(implementation = LoginResponseDto.class))),
         @ApiResponse(
             responseCode = "400",
             description = "Invalid email or password",

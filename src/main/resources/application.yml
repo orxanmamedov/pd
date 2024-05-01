@@ -49,6 +49,7 @@ springdoc:
 
 feign:
   stock:
+    name: "stock-api"
     url: "https://latest-stock-price.p.rapidapi.com"
     path: "any"
     api-key: "c387c52c6cmshd33f6e4704a3b14p1a70cejsne74c23af7a5c"

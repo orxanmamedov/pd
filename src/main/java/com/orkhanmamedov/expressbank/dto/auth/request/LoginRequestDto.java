@@ -11,7 +11,7 @@ public record LoginRequestDto(
         @Pattern(
             regexp =
                 "^(?!.*[._-]{2})[a-zA-Z0-9](?:[a-zA-Z0-9._-]*[a-zA-Z0-9])?@[a-zA-Z0-9](?:[a-zA-Z0-9.-]*[a-zA-Z0-9])?\\.[a-zA-Z]{2,6}$",
-            message = "Invalid email format")
+            message = "Invalid email or password")
         @Schema(example = "username@domain.com")
         String email,
     @NotBlank(message = "Password cannot be blank or null")

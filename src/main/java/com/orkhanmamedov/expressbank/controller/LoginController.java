@@ -1,8 +1,8 @@
 package com.orkhanmamedov.expressbank.controller;
 
 import com.orkhanmamedov.expressbank.dto.auth.request.LoginRequestDto;
-import com.orkhanmamedov.expressbank.dto.auth.response.LoginResponseMessageDto;
-import com.orkhanmamedov.expressbank.dto.common.MessageResponseDto;
+import com.orkhanmamedov.expressbank.dto.auth.response.LoginResponseDto;
+import com.orkhanmamedov.expressbank.dto.common.response.MessageResponseDto;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -25,7 +25,7 @@ public interface LoginController {
             content =
                 @Content(
                     mediaType = MediaType.APPLICATION_JSON_VALUE,
-                    schema = @Schema(implementation = LoginResponseMessageDto.class))),
+                    schema = @Schema(implementation = LoginResponseDto.class))),
         @ApiResponse(
             responseCode = "400",
             description = "Invalid email or password",
@@ -34,5 +34,5 @@ public interface LoginController {
                     mediaType = MediaType.APPLICATION_JSON_VALUE,
                     schema = @Schema(implementation = MessageResponseDto.class))),
       })
-  LoginResponseMessageDto login(LoginRequestDto dto);
+  LoginResponseDto login(LoginRequestDto dto);
 }

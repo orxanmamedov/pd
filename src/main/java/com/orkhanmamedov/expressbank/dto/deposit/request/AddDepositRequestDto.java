@@ -1,4 +1,4 @@
-package com.orkhanmamedov.expressbank.deposit.request;
+package com.orkhanmamedov.expressbank.dto.deposit.request;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.math.BigDecimal;

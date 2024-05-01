@@ -1,4 +1,4 @@
-package com.orkhanmamedov.expressbank.dto.common;
+package com.orkhanmamedov.expressbank.dto.common.response;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 

@@ -1,6 +1,6 @@
 package com.orkhanmamedov.expressbank.controller;
 
-import com.orkhanmamedov.expressbank.dto.common.MessageResponseDto;
+import com.orkhanmamedov.expressbank.dto.common.response.MessageResponseDto;
 import com.orkhanmamedov.expressbank.dto.user.request.UserRequestDto;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;

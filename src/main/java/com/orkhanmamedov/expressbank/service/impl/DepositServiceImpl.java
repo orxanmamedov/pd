@@ -1,7 +1,6 @@
 package com.orkhanmamedov.expressbank.service.impl;
 
-import com.orkhanmamedov.expressbank.deposit.request.AddDepositRequestDto;
-import com.orkhanmamedov.expressbank.dto.common.MessageResponseDto;
+import com.orkhanmamedov.expressbank.dto.deposit.request.AddDepositRequestDto;
 import com.orkhanmamedov.expressbank.entity.UserEntity;
 import com.orkhanmamedov.expressbank.exception.BusinessException;
 import com.orkhanmamedov.expressbank.repository.UserRepository;
@@ -18,7 +17,7 @@ public class DepositServiceImpl implements DepositService {
   private final UserRepository userRepository;
 
   @Override
-  public MessageResponseDto addDeposit(String userId, AddDepositRequestDto dto) {
+  public void addDeposit(String userId, AddDepositRequestDto dto) {
 
     UserEntity userEntity =
         userRepository
@@ -31,6 +30,5 @@ public class DepositServiceImpl implements DepositService {
     userRepository.save(userEntity);
 
     log.info("Deposit has been added to user {}", userId);
-    return new MessageResponseDto(MessageResponseDto.DEPOSIT_ADDED);
   }
 }
