@@ -1,0 +1,7 @@
+application:
+  environment:
+    name: test
+
+# Keycloak configuration
+keycloak:
+  realm: express-bank-realm

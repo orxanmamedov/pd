@@ -15,10 +15,10 @@ public record LoginRequestDto(
         @Schema(example = "username@domain.com")
         String email,
     @NotBlank(message = "Password cannot be blank or null")
-    @Pattern(
+        @Pattern(
             regexp = "^[a-zA-Z0-9]{6,}$",
             message =
-                    "Password must be at least 6 characters long and contain only alphanumeric characters")
-    @Schema(example = "Password1")
-    @NotBlank
-    String password) {}
+                "Password must be at least 6 characters long and contain only alphanumeric characters")
+        @Schema(example = "Password1")
+        @NotBlank
+        String password) {}

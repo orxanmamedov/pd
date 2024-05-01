@@ -46,3 +46,11 @@ springdoc:
   writer-with-default-pretty-printer: true
   api-docs:
     path: /api-docs
+
+feign:
+  stock:
+    url: "https://latest-stock-price.p.rapidapi.com"
+    path: "any"
+    api-key: "c387c52c6cmshd33f6e4704a3b14p1a70cejsne74c23af7a5c"
+    api-host: "latest-stock-price.p.rapidapi.com"
+

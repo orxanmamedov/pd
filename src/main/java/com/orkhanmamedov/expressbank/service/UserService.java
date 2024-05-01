@@ -1,8 +1,8 @@
 package com.orkhanmamedov.expressbank.service;
 
-import com.orkhanmamedov.expressbank.dto.user.request.UserRegistrationRequestDto;
+import com.orkhanmamedov.expressbank.dto.user.request.UserRequestDto;
 
 public interface UserService {
 
-  void saveUser(UserRegistrationRequestDto userDto);
+  void saveUser(UserRequestDto userDto);
 }

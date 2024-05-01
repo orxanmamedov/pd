@@ -1,11 +1,12 @@
 package com.orkhanmamedov.expressbank.service.impl;
 
 import com.orkhanmamedov.expressbank.config.KeycloakProvider;
-import com.orkhanmamedov.expressbank.dto.user.request.UserRegistrationRequestDto;
+import com.orkhanmamedov.expressbank.dto.user.request.UserRequestDto;
 import com.orkhanmamedov.expressbank.exception.BusinessException;
 import com.orkhanmamedov.expressbank.service.RegistrationService;
 import com.orkhanmamedov.expressbank.service.UserService;
 import java.util.Collections;
+import java.util.Optional;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.Response;
 import lombok.extern.slf4j.Slf4j;
@@ -46,7 +47,7 @@ public class RegistrationServiceImpl implements RegistrationService {
   }
 
   @Override
-  public void registerUser(final UserRegistrationRequestDto dto) {
+  public void registerUser(final UserRequestDto dto) {
 
     log.info("{RegistrationService -> registerUser} -> Request to create user in Keycloak");
 
@@ -56,7 +57,7 @@ public class RegistrationServiceImpl implements RegistrationService {
       kcUser.setUsername(dto.email());
       kcUser.setEmail(dto.email());
       kcUser.setEnabled(true);
-      kcUser.setEmailVerified(true);
+      kcUser.setEmailVerified(false);
 
       CredentialRepresentation credentialRepresentation = createPasswordCredentials(dto.password());
       kcUser.setCredentials(Collections.singletonList(credentialRepresentation));
@@ -73,14 +74,17 @@ public class RegistrationServiceImpl implements RegistrationService {
       assignUserRole(userId);
       log.info("{registerUser} -> User was assigned to role USER");
 
-      UserRegistrationRequestDto userDto =
-          UserRegistrationRequestDto.builder()
-              .id(userId)
-              .name(dto.name())
-              .email(dto.email())
-              .build();
+      UserRequestDto userDto =
+          UserRequestDto.builder().id(userId).name(dto.name()).email(dto.email()).build();
       userService.saveUser(userDto);
       log.info("User data was saved");
+
+      Optional<UserRepresentation> userByName =
+          usersResource.searchByUsername(userDto.email(), true).stream()
+              .filter(user -> !user.isEmailVerified())
+              .findFirst();
+      userByName.ifPresent(user -> sendEmailVerification(user.getId()));
+      log.info("Email was sent to user {}", userId);
     } catch (WebApplicationException e) {
       log.info(e.getMessage());
       throw new BusinessException(HttpStatus.CONFLICT, BusinessException.USER_ALREADY_EXISTS);
@@ -92,5 +96,10 @@ public class RegistrationServiceImpl implements RegistrationService {
     RolesResource rolesResource = realmResource.roles();
     RoleRepresentation userRole = rolesResource.get(ROLE_NAME).toRepresentation();
     realmResource.users().get(userId).roles().realmLevel().add(Collections.singletonList(userRole));
+  }
+
+  private void sendEmailVerification(String userId) {
+    UsersResource usersResource = kcProvider.getInstance().realm(realm).users();
+    usersResource.get(userId).sendVerifyEmail();
   }
 }

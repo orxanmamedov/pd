@@ -8,8 +8,7 @@ import lombok.Builder;
 
 @Builder(toBuilder = true)
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public record UserRegistrationRequestDto(
-    @Schema(hidden = true) String id,
+public record UserRequestDto(
     @NotBlank(message = "Name cannot be blank or null")
         @Pattern(
             regexp = "^(?![- ])(?!.*[- ]$)[a-zA-Z\\s-]{2,30}$",
@@ -32,4 +31,6 @@ public record UserRegistrationRequestDto(
                 "Password must be at least 6 characters long and contain only alphanumeric characters")
         @Schema(example = "Password1")
         @NotBlank
-        String password) {}
+        String password,
+    @Schema(hidden = true) String id,
+    @Schema(hidden = true) String depositBalance) {}

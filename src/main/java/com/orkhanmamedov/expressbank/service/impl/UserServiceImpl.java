@@ -1,6 +1,6 @@
 package com.orkhanmamedov.expressbank.service.impl;
 
-import com.orkhanmamedov.expressbank.dto.user.request.UserRegistrationRequestDto;
+import com.orkhanmamedov.expressbank.dto.user.request.UserRequestDto;
 import com.orkhanmamedov.expressbank.entity.RoleEntity;
 import com.orkhanmamedov.expressbank.entity.UserEntity;
 import com.orkhanmamedov.expressbank.mapper.UserMapper;
@@ -22,7 +22,7 @@ public class UserServiceImpl implements UserService {
 
   @Override
   @Transactional
-  public void saveUser(UserRegistrationRequestDto userDto) {
+  public void saveUser(UserRequestDto userDto) {
     log.info("{saveUser} -> Save user");
 
     final UserEntity user = userMapper.toEntity(userDto);

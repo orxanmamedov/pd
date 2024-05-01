@@ -1,5 +1,6 @@
 package com.orkhanmamedov.expressbank.entity;
 
+import java.math.BigDecimal;
 import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -37,4 +38,7 @@ public class UserEntity {
       joinColumns = @JoinColumn(name = "user_id"),
       inverseJoinColumns = @JoinColumn(name = "role_id"))
   private Set<RoleEntity> roles;
+
+  @Column(name = "deposit_balance")
+  private BigDecimal depositBalance;
 }

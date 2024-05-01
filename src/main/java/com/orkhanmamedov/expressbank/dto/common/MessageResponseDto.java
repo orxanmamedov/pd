@@ -5,7 +5,5 @@ import lombok.Builder;
 
 @Builder
 public record MessageResponseDto(@Schema(example = "response message") String message) {
-  public static final String DEPOSIT_CREATED = "Your deposit has been successfully created";
-  public static final String PAYMENT_IS_SUCCESSFUL = "Payment has been successful";
-  public static final String TRANSFER_IS_SUCCESSFUL = "Transfer has been completed successfully";
+  public static final String DEPOSIT_ADDED = "Your deposit has been successfully added";
 }
