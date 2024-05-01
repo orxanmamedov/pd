@@ -9,7 +9,7 @@ import lombok.Builder;
 @Builder(toBuilder = true)
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public record UserRegistrationRequestDto(
-    String id,
+    @Schema(hidden = true) String id,
     @NotBlank(message = "Name cannot be blank or null")
         @Pattern(
             regexp = "^(?![- ])(?!.*[- ]$)[a-zA-Z\\s-]{2,30}$",
