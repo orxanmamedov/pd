@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
+
 @Slf4j
 @RestController
 @RequestMapping(LoginControllerImpl.API_V1_URI)
@@ -19,8 +21,9 @@ public class LoginControllerImpl implements LoginController {
 
   private final AuthService authService;
 
+  @Override
   @PostMapping(LOGIN_URI)
-  public LoginResponseMessageDto login(@RequestBody LoginRequestDto dto) {
+  public LoginResponseMessageDto login(@RequestBody @Valid LoginRequestDto dto) {
 
     log.info("{login} -> Login request from user with email {}.", dto.email());
 

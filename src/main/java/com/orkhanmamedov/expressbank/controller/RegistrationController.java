@@ -8,6 +8,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.RequestBody;
 
 public interface RegistrationController {
 
@@ -15,7 +16,6 @@ public interface RegistrationController {
   String REGISTRATIONS_URI = "/registrations";
 
   String REGISTRATIONS_URL = API_V1_URI + REGISTRATIONS_URI;
-  String ANY_WILDCARD_URI = "/**";
 
   @Operation(summary = "Register user")
   @ApiResponses(
@@ -42,5 +42,5 @@ public interface RegistrationController {
                     mediaType = MediaType.APPLICATION_JSON_VALUE,
                     schema = @Schema(implementation = MessageResponseDto.class)))
       })
-  MessageResponseDto registerUser(final UserRegistrationRequestDto dto);
+  MessageResponseDto registerUser(UserRegistrationRequestDto dto);
 }

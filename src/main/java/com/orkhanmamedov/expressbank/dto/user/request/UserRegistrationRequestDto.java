@@ -27,9 +27,9 @@ public record UserRegistrationRequestDto(
         String email,
     @NotBlank(message = "Password cannot be blank or null")
         @Pattern(
-            regexp =
-                "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@!$?*()\\[\\]{}'\";:\\\\/<>,._\\-])[a-zA-Z0-9@!$?*()\\[\\]{}'\";:\\\\/<>,._\\-]{8,50}$",
-            message = "Invalid characters in password")
-        @Schema(example = "Password1_")
+            regexp = "^[a-zA-Z0-9]{6,}$",
+            message =
+                "Password must be at least 6 characters long and contain only alphanumeric characters")
+        @Schema(example = "Password1")
         @NotBlank
         String password) {}
