@@ -1,0 +1,47 @@
+spring:
+  application:
+    name: ExpressBank
+
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/express_bank
+    username: postgres
+    password: postgres
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: none
+
+  security:
+    oauth2:
+      resource server:
+        jwt:
+          jwk-set-uri: http://localhost:8180/realms/express-bank-realm/protocol/openid-connect/certs
+
+  liquibase:
+    change-log: db/root.changelog.xml
+
+server:
+  port: 9001
+keycloak:
+  realm: express-bank-realm
+  resource: express-bank
+  bearer-only: true
+  use-resource-role-mappings: true
+  auth-server-url: http://localhost:8180
+  credentials:
+    secret: xoUIy52vYICxszXGBGwGTIXj1eXzEdZQ
+  ssl-required: external
+
+logging:
+  level:
+    org:
+      keycloak: debug
+
+
+springdoc:
+  writer-with-default-pretty-printer: true
+  api-docs:
+    path: /api-docs

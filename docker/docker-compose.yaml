@@ -1,0 +1,78 @@
+version: "3.5"
+
+services:
+
+  db:
+    image: postgres:14-alpine
+    restart: always
+    hostname: db
+    container_name: db
+    environment:
+      POSTGRES_USER: $AND_POSTGRES_USER
+      POSTGRES_PASSWORD: $AND_POSTGRES_PASS
+      PGDATA: "/var/lib/postgresql/data/pgdata"
+    volumes:
+      - express_db_data:/var/lib/postgresql/data
+      - ./db/init.sql:/docker-entrypoint-initdb.d/create_databases.sql
+    ports:
+      - "5432:5432"
+    networks:
+      - express-bank-net
+
+  keycloak_db:
+    domainname: keycloak_db
+    hostname: keycloak_db
+    container_name: keycloak_db
+    image: "postgres:15-alpine"
+    volumes:
+      - ./keycloak/keycloak_db/data:/var/lib/postgresql/data
+    env_file: keycloak.env
+    ports:
+      - "5436:5432"
+    restart: unless-stopped
+    networks:
+      - express-bank-net
+
+  keycloak:
+    image: quay.io/keycloak/keycloak:21.1.1
+    container_name: keycloak
+    restart: unless-stopped
+    command:
+      - start-dev
+      - --import-realm
+    depends_on:
+      - keycloak_db
+    ports:
+      - '8180:8080'
+    env_file: keycloak.env
+    volumes:
+      - ./keycloak/realms/import:/opt/keycloak/data/import
+      - ./keycloak/realms/export:/tmp/export
+    networks:
+      - express-bank-net
+
+  express-bank:
+    hostname: express-bank
+    container_name: express-bank
+    build:
+      context: ..
+      dockerfile: Dockerfile
+    image: express-bank
+    restart: always
+    environment:
+      KEYCLOAK_AUTH-SERVER-URL: $AND_KEYCLOAK_AUTH_SERVER_URL
+      SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_JWK-SET-URI: $AND_OAUTH2_JWT_URI
+      KEYCLOAK_CREDENTIALS_SECRET: $AND_KEYCLOAK_DNS_SECRET
+      JAVA_TOOL_OPTIONS: -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5006
+    depends_on:
+      - keycloak
+    ports:
+      - "9003:9003"
+      - "5006:5006"
+    networks:
+      - express-bank-net
+
+networks:
+  express-bank-net:
+    name: express-local
+    driver: bridge
