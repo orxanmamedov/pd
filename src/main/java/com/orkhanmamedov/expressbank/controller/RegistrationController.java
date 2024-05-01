@@ -28,7 +28,7 @@ public interface RegistrationController {
                     schema = @Schema(implementation = MessageResponseDto.class))),
         @ApiResponse(
             responseCode = "400",
-            description = "Email cannot be blank or null | Invalid email format ",
+            description = "Invalid email format ",
             content =
                 @Content(
                     mediaType = MediaType.APPLICATION_JSON_VALUE,

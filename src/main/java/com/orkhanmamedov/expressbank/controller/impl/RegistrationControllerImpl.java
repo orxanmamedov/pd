@@ -22,7 +22,7 @@ public class RegistrationControllerImpl implements RegistrationController {
 
   @Override
   @PostMapping
-  public MessageResponseDto registerUser(final @RequestBody @Valid UserRequestDto dto) {
+  public MessageResponseDto registerUser(@RequestBody @Valid final UserRequestDto dto) {
     log.info(
         "{RegistrationController -> registerUser} -> "
             + "User registration request to auth-service from user with email {}.",

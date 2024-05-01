@@ -47,10 +47,6 @@ public class RegistrationEndpointTest extends AbstractIntegrationTest {
         Arguments.of(
             HttpStatus.BAD_REQUEST,
             getValidUserRequestDto().toBuilder().email("invalid_email").build(),
-            new MessageResponseDto("Invalid email format")),
-        Arguments.of(
-            HttpStatus.BAD_REQUEST,
-            getValidUserRequestDto().toBuilder().email(null).build(),
-            new MessageResponseDto("Email cannot be blank or null")));
+            new MessageResponseDto("Invalid email format")));
   }
 }
