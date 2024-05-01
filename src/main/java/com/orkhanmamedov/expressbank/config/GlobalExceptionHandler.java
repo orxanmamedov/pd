@@ -5,6 +5,7 @@ import com.orkhanmamedov.expressbank.dto.common.ValidationExceptionResponseDto;
 import com.orkhanmamedov.expressbank.exception.BusinessException;
 import com.orkhanmamedov.expressbank.exception.SecurityException;
 import com.orkhanmamedov.expressbank.exception.TechnicalException;
+import java.util.Optional;
 import liquibase.repackaged.org.apache.commons.lang3.StringUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -14,8 +15,6 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-
-import java.util.Optional;
 
 @Slf4j
 @ControllerAdvice
@@ -44,12 +43,12 @@ public class GlobalExceptionHandler {
 
   @ExceptionHandler(MethodArgumentNotValidException.class)
   public ResponseEntity<ValidationExceptionResponseDto> handleMethodArgumentNotValidException(
-          final MethodArgumentNotValidException ex) {
+      final MethodArgumentNotValidException ex) {
 
     Optional<FieldError> fieldError =
-            Optional.ofNullable(ex)
-                    .map(MethodArgumentNotValidException::getBindingResult)
-                    .map(Errors::getFieldError);
+        Optional.ofNullable(ex)
+            .map(MethodArgumentNotValidException::getBindingResult)
+            .map(Errors::getFieldError);
 
     String message = fieldError.map(FieldError::getDefaultMessage).orElse(StringUtils.EMPTY);
 
@@ -58,6 +57,6 @@ public class GlobalExceptionHandler {
     log.warn("{handleMethodArgumentNotValidException} -> message = {}, field = {}", message, field);
 
     return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-            .body(new ValidationExceptionResponseDto(message, field));
+        .body(new ValidationExceptionResponseDto(message, field));
   }
 }

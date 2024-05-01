@@ -9,9 +9,6 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.RequestBody;
-
-import javax.validation.Valid;
 
 public interface LoginController {
 
@@ -31,8 +28,7 @@ public interface LoginController {
                     schema = @Schema(implementation = LoginResponseMessageDto.class))),
         @ApiResponse(
             responseCode = "400",
-            description =
-                "Invalid email or password",
+            description = "Invalid email or password",
             content =
                 @Content(
                     mediaType = MediaType.APPLICATION_JSON_VALUE,

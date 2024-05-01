@@ -4,14 +4,13 @@ import com.orkhanmamedov.expressbank.controller.RegistrationController;
 import com.orkhanmamedov.expressbank.dto.common.MessageResponseDto;
 import com.orkhanmamedov.expressbank.dto.user.request.UserRegistrationRequestDto;
 import com.orkhanmamedov.expressbank.service.RegistrationService;
+import javax.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import javax.validation.Valid;
 
 @RestController
 @Slf4j
