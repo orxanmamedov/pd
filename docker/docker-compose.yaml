@@ -25,7 +25,7 @@ services:
     container_name: keycloak_db
     image: "postgres:15-alpine"
     volumes:
-      - ./keycloak/keycloak_db/data:/var/lib/postgresql/data
+      - express_keycloak_db_data:/var/lib/postgresql/data
     env_file: keycloak.env
     ports:
       - "5436:5432"
@@ -79,3 +79,4 @@ networks:
 
 volumes:
   express_db_data:
+  express_keycloak_db_data:
