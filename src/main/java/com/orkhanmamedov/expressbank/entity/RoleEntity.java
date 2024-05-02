@@ -11,7 +11,10 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.Accessors;
 
@@ -19,6 +22,9 @@ import lombok.experimental.Accessors;
 @Getter
 @Setter
 @Table(name = "roles")
+@Builder(toBuilder = true)
+@AllArgsConstructor
+@NoArgsConstructor
 @Accessors(chain = true)
 public class RoleEntity {
 

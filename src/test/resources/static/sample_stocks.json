@@ -1,0 +1,94 @@
+[
+  {
+    "identifier": "NIFTY 50",
+    "change": -38.55000000000291,
+    "dayHigh": 22783.35,
+    "dayLow": 22568.4,
+    "lastPrice": 22604.85,
+    "lastUpdateTime": "30-Apr-2024 16:00:00",
+    "meta": {
+      "companyName": null,
+      "industry": null,
+      "isin": null
+    },
+    "open": 22679.65,
+    "pChange": -0.17,
+    "perChange30d": 1.24,
+    "perChange365d": 25.13,
+    "previousClose": 22643.4,
+    "symbol": "NIFTY 50",
+    "totalTradedValue": 387414784140.35,
+    "totalTradedVolume": 361859375,
+    "yearHigh": 22783.35,
+    "yearLow": 18055.45
+  },
+  {
+    "identifier": "BAJFINANCEEQN",
+    "change": 76.45,
+    "dayHigh": 6975,
+    "dayLow": 6821.95,
+    "lastPrice": 6903.05,
+    "lastUpdateTime": "30-Apr-2024 15:59:35",
+    "meta": {
+      "companyName": "Bajaj Finance Limited",
+      "industry": "FINANCE",
+      "isin": "INE296A13011"
+    },
+    "open": 6829.95,
+    "pChange": 1.12,
+    "perChange30d": -4.44,
+    "perChange365d": 10.25,
+    "previousClose": 6826.6,
+    "symbol": "BAJFINANCE",
+    "totalTradedValue": 12421829417.5,
+    "totalTradedVolume": 1798675,
+    "yearHigh": 8192,
+    "yearLow": 6155.95
+  },
+  {
+    "identifier": "M&MEQN",
+    "change": 97.85,
+    "dayHigh": 2169,
+    "dayLow": 2073.05,
+    "lastPrice": 2159.9,
+    "lastUpdateTime": "30-Apr-2024 15:59:56",
+    "meta": {
+      "companyName": "Mahindra & Mahindra Limited",
+      "industry": "AUTOMOBILES - 4 WHEELERS",
+      "isin": "INE101A01026"
+    },
+    "open": 2073.05,
+    "pChange": 4.75,
+    "perChange30d": 12.23,
+    "perChange365d": 75.76,
+    "previousClose": 2062.05,
+    "symbol": "M&M",
+    "totalTradedValue": 12348840169.92,
+    "totalTradedVolume": 5745143,
+    "yearHigh": 2169,
+    "yearLow": 1208.05
+  },
+  {
+    "identifier": "HDFCBANKEQN",
+    "change": -14.05,
+    "dayHigh": 1539.5,
+    "dayLow": 1514.9,
+    "lastPrice": 1515.45,
+    "lastUpdateTime": "30-Apr-2024 16:00:00",
+    "meta": {
+      "companyName": "HDFC Bank Limited",
+      "industry": "BANKS",
+      "isin": "INE040A13013"
+    },
+    "open": 1529.2,
+    "pChange": -0.92,
+    "perChange30d": 4.99,
+    "perChange365d": -9.93,
+    "previousClose": 1529.5,
+    "symbol": "HDFCBANK",
+    "totalTradedValue": 39969639807.659996,
+    "totalTradedVolume": 26153691,
+    "yearHigh": 1757.5,
+    "yearLow": 1363.55
+  }
+]

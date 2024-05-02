@@ -25,19 +25,14 @@ public class AuthServiceImpl implements AuthService {
   @Override
   public LoginResponseDto login(LoginRequestDto dto) {
     log.info("{login} -> start login for user {}", dto.email());
-
-    AccessTokenResponse response = getAccessToken(dto);
-
-    LoginResponseDto result =
-        LoginResponseDto.builder()
-            .tokenType(response.getTokenType())
-            .token(response.getToken())
-            .refreshToken(response.getRefreshToken())
-            .build();
-
+    AccessTokenResponse accessToken = getAccessToken(dto);
     log.info("{login} -> end login for user {} successfully", dto.email());
 
-    return result;
+    return LoginResponseDto.builder()
+        .tokenType(accessToken.getTokenType())
+        .token(accessToken.getToken())
+        .refreshToken(accessToken.getRefreshToken())
+        .build();
   }
 
   private AccessTokenResponse getAccessToken(LoginRequestDto dto) {

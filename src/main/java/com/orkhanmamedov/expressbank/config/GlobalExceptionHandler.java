@@ -4,7 +4,6 @@ import com.orkhanmamedov.expressbank.dto.common.response.MessageResponseDto;
 import com.orkhanmamedov.expressbank.dto.common.response.ValidationExceptionResponseDto;
 import com.orkhanmamedov.expressbank.exception.BusinessException;
 import com.orkhanmamedov.expressbank.exception.SecurityException;
-import com.orkhanmamedov.expressbank.exception.TechnicalException;
 import java.util.Optional;
 import liquibase.repackaged.org.apache.commons.lang3.StringUtils;
 import lombok.extern.slf4j.Slf4j;
@@ -30,13 +29,6 @@ public class GlobalExceptionHandler {
   @ExceptionHandler(SecurityException.class)
   public ResponseEntity<MessageResponseDto> handleSecurityException(final SecurityException ex) {
     log.warn("{handleSecurityException} -> {}", ex.getMessage());
-
-    return ResponseEntity.status(ex.getHttpStatus()).body(new MessageResponseDto(ex.getMessage()));
-  }
-
-  @ExceptionHandler(TechnicalException.class)
-  public ResponseEntity<MessageResponseDto> handleTechnicalException(final TechnicalException ex) {
-    log.warn("{handleTechnicalException} -> {}", ex.getMessage());
 
     return ResponseEntity.status(ex.getHttpStatus()).body(new MessageResponseDto(ex.getMessage()));
   }

@@ -26,6 +26,7 @@ public class RegistrationEndpointTest extends AbstractIntegrationTest {
       HttpStatus status, UserRequestDto request, MessageResponseDto expected) throws Exception {
 
     // when
+    setUpKc();
     // then
     mockMvc
         .perform(

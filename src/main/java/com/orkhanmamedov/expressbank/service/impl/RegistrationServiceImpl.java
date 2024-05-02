@@ -27,14 +27,14 @@ import org.springframework.stereotype.Service;
 public class RegistrationServiceImpl implements RegistrationService {
 
   private static final String ROLE_NAME = "USER";
-  private final KeycloakProvider kcProvider;
+  private final KeycloakProvider keycloakProvider;
   private final UserService userService;
 
   @Value("${keycloak.realm}")
   public String realm;
 
-  public RegistrationServiceImpl(KeycloakProvider kcProvider, UserService userService) {
-    this.kcProvider = kcProvider;
+  public RegistrationServiceImpl(KeycloakProvider keycloakProvider, UserService userService) {
+    this.keycloakProvider = keycloakProvider;
     this.userService = userService;
   }
 
@@ -52,7 +52,7 @@ public class RegistrationServiceImpl implements RegistrationService {
     log.info("{RegistrationService -> registerUser} -> Request to create user in Keycloak");
 
     try {
-      UsersResource usersResource = kcProvider.getInstance().realm(realm).users();
+      UsersResource usersResource = keycloakProvider.getInstance().realm(realm).users();
       UserRepresentation kcUser = new UserRepresentation();
       kcUser.setUsername(dto.email());
       kcUser.setEmail(dto.email());
@@ -79,27 +79,25 @@ public class RegistrationServiceImpl implements RegistrationService {
       userService.saveUser(userDto);
       log.info("User data was saved");
 
-      Optional<UserRepresentation> userByName =
-          usersResource.searchByUsername(userDto.email(), true).stream()
-              .filter(user -> !user.isEmailVerified())
-              .findFirst();
-      userByName.ifPresent(user -> sendEmailVerification(user.getId()));
+      getUserByEmail(usersResource, userDto.email())
+          .ifPresent(user -> usersResource.get(userId).sendVerifyEmail());
       log.info("Email was sent to user {}", userId);
     } catch (WebApplicationException e) {
-      log.info(e.getMessage());
       throw new BusinessException(HttpStatus.CONFLICT, BusinessException.USER_ALREADY_EXISTS);
     }
   }
 
+  private Optional<UserRepresentation> getUserByEmail(
+      UsersResource usersResource, String userEmail) {
+    return usersResource.searchByUsername(userEmail, true).stream()
+        .filter(user -> !user.isEmailVerified())
+        .findFirst();
+  }
+
   private void assignUserRole(final String userId) {
-    RealmResource realmResource = kcProvider.getInstance().realm(realm);
+    RealmResource realmResource = keycloakProvider.getInstance().realm(realm);
     RolesResource rolesResource = realmResource.roles();
     RoleRepresentation userRole = rolesResource.get(ROLE_NAME).toRepresentation();
     realmResource.users().get(userId).roles().realmLevel().add(Collections.singletonList(userRole));
-  }
-
-  private void sendEmailVerification(String userId) {
-    UsersResource usersResource = kcProvider.getInstance().realm(realm).users();
-    usersResource.get(userId).sendVerifyEmail();
   }
 }

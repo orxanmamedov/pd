@@ -7,5 +7,5 @@ RUN mvn clean install -Dmaven.test.skip
 #app package stage
 FROM openjdk:17-alpine3.14
 WORKDIR /app
-COPY --from=builder /usr/test/src/auth-service/target/express-bank*.jar /app/express-bank.jar
+COPY --from=builder /usr/test/src/express-bank/target/express-bank*.jar /app/express-bank.jar
 CMD ["java", "-jar", "/app/express-bank.jar"]
