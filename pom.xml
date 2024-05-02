@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.orkhanmamedov</groupId>
-    <artifactId>ExpressBank</artifactId>
+    <artifactId>express-bank</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>ExpressBank</name>
     <description>ExpressBank</description>
