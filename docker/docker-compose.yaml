@@ -63,12 +63,13 @@ services:
       KEYCLOAK_AUTH-SERVER-URL: $AND_KEYCLOAK_AUTH_SERVER_URL
       SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_JWK-SET-URI: $AND_OAUTH2_JWT_URI
       KEYCLOAK_CREDENTIALS_SECRET: $AND_KEYCLOAK_DNS_SECRET
-      JAVA_TOOL_OPTIONS: -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5006
+      SPRING_DATASOURCE_USERNAME: $AND_POSTGRES_USER
+      SPRING_DATASOURCE_PASSWORD: $AND_POSTGRES_PASS
+      SPRING_DATASOURCE_URL: $AND_DB_URL
     depends_on:
       - keycloak
     ports:
       - "9001:9001"
-      - "5006:5006"
     networks:
       - express-bank-net
 
