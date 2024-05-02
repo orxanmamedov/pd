@@ -44,7 +44,9 @@ public class RegistrationEndpointTest extends AbstractIntegrationTest {
             HttpStatus.OK,
             getValidUserRequestDto(),
             new MessageResponseDto(
-                String.format("User with email: %s added", getValidUserRequestDto().email()))),
+                String.format(
+                    "User with email: %s added, check your email for verification link",
+                    getValidUserRequestDto().email()))),
         Arguments.of(
             HttpStatus.BAD_REQUEST,
             getValidUserRequestDto().toBuilder().email("invalid_email").build(),
