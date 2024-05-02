@@ -78,4 +78,4 @@ networks:
     driver: bridge
 
 volumes:
-  etalon_db_data:
+  express_db_data:
