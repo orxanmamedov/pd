@@ -67,7 +67,7 @@ services:
     depends_on:
       - keycloak
     ports:
-      - "9003:9003"
+      - "9001:9001"
       - "5006:5006"
     networks:
       - express-bank-net
