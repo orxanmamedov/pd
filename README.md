@@ -2,7 +2,7 @@
 
 ### Running a project locally with Docker
 
- Run docker compose and then u can enter to swagger api: [swagger](http://localhost:9001/swagger-ui/index.html#/)
+ Run docker compose and then u can enter to swagger api:localhost:9001/swagger-ui/index.html#/
 
 
  Because i had no time for configuring reverse proxy verification of email is not working when app was run from docker because keycloak doesn`t allow connections from external host. So run everything beside the app from docker:
