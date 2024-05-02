@@ -76,3 +76,6 @@ networks:
   express-bank-net:
     name: express-local
     driver: bridge
+
+volumes:
+  etalon_db_data:
