@@ -29,6 +29,8 @@ public class RegistrationControllerImpl implements RegistrationController {
         dto.email());
 
     registrationService.registerUser(dto);
-    return new MessageResponseDto(String.format("User with email: %s added, check your email for verification link", dto.email()));
+    return new MessageResponseDto(
+        String.format(
+            "User with email: %s added, check your email for verification link", dto.email()));
   }
 }
