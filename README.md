@@ -1,4 +1,4 @@
-# A-Music2-Etalon-eureka-server
+# Payday Trade
 
 ### Running a project locally with Docker
 
