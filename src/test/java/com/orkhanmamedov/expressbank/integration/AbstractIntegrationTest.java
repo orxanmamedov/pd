@@ -87,7 +87,7 @@ public class AbstractIntegrationTest {
   static PostgreSQLContainer postgresqlContainer =
       (PostgreSQLContainer)
           new PostgreSQLContainer("postgres:14-alpine")
-              .withDatabaseName("transaction_service")
+              .withDatabaseName("express_bank")
               .withUsername("postgres")
               .withPassword("postgres")
               .withReuse(true);
