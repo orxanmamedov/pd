@@ -2,14 +2,14 @@
 
 ### Running a project locally with Docker
 
- Run docker compose and then u can enter to swagger api: localhost:9001/swagger-ui/index.html#/
-
-
- Because i had no time for configuring reverse proxy, keycloak doesn`t allow to verify email from external hostt. So run everything beside the app from docker and in this case keycloak allows to verify email:
 1. Run keycloack, keycloak db, and postgres db from docker
 2. Download all necesseary dependencies
 3. Сheck that you are using java 17
 4. Run express bank app from ide or from artifact
+   
+P.S.
+ U can run docker compose and then u can enter to swagger api: localhost:9001/swagger-ui/index.html#/ but in this case the email verification would not work.
+ Because i had no time for configuring reverse proxy, keycloak doesn`t allow to verify email from external hostt. So run everything beside the app from docker and in this case keycloak allows to verify email:
 
 Flow
 
