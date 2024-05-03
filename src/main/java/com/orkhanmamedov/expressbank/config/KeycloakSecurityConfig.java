@@ -38,8 +38,6 @@ public class KeycloakSecurityConfig {
         .permitAll()
         .mvcMatchers(SWAGGER_URL)
         .permitAll()
-        .mvcMatchers(ACTUATOR_URI)
-        .permitAll()
         .anyRequest()
         .fullyAuthenticated()
         .and()
