@@ -25,7 +25,7 @@ public class RegistrationControllerImpl implements RegistrationController {
   public MessageResponseDto registerUser(@RequestBody @Valid final UserRequestDto dto) {
     log.info(
         "{RegistrationController -> registerUser} -> "
-            + "User registration request to auth-service from user with email {}.",
+            + "User registration request from user with email {}.",
         dto.email());
 
     registrationService.registerUser(dto);
