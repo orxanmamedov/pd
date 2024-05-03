@@ -5,6 +5,8 @@ import com.orkhanmamedov.expressbank.entity.UserEntity;
 import com.orkhanmamedov.expressbank.exception.BusinessException;
 import com.orkhanmamedov.expressbank.repository.UserRepository;
 import com.orkhanmamedov.expressbank.service.DepositService;
+import java.math.BigDecimal;
+import java.util.Objects;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -26,7 +28,10 @@ public class DepositServiceImpl implements DepositService {
                 () ->
                     new BusinessException(
                         HttpStatus.BAD_REQUEST, BusinessException.USER_NOT_FOUND));
-    userEntity.setDepositBalance(dto.depositAmount());
+    BigDecimal userBalance = userEntity.getDepositBalance();
+    userEntity.setDepositBalance(
+        Objects.isNull(userBalance) ? dto.depositAmount() : userBalance.add(dto.depositAmount()));
+
     userRepository.save(userEntity);
 
     log.info("Deposit has been added to user {}", userId);

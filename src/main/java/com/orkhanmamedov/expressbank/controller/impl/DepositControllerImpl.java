@@ -24,6 +24,7 @@ public class DepositControllerImpl implements DepositController {
   @PostMapping(ADD_DEPOSITS_URI)
   public MessageResponseDto addDeposit(@RequestBody AddDepositRequestDto dto) {
     log.info("{addDeposit} -> Request to add deposit");
+
     depositService.addDeposit(authenticationHolder.getUserId(), dto);
     return new MessageResponseDto(MessageResponseDto.DEPOSIT_ADDED);
   }

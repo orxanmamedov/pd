@@ -21,6 +21,7 @@ public class StockControllerImpl implements StockController {
   @GetMapping
   public List<StockResponseDto> getStocks() {
     log.info("{StockController -> getStocks} Request for getting stocks");
+
     return stockService.getStocks();
   }
 }

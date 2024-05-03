@@ -23,7 +23,6 @@ public class LoginControllerImpl implements LoginController {
   @Override
   @PostMapping(LOGIN_URI)
   public LoginResponseDto login(@RequestBody @Valid LoginRequestDto dto) {
-
     log.info("{login} -> Login request from user with email {}.", dto.email());
 
     return authService.login(dto);

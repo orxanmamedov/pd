@@ -5,6 +5,7 @@ import com.orkhanmamedov.expressbank.dto.auth.request.LoginRequestDto;
 import com.orkhanmamedov.expressbank.dto.auth.response.LoginResponseDto;
 import com.orkhanmamedov.expressbank.exception.SecurityException;
 import com.orkhanmamedov.expressbank.service.AuthService;
+import javax.ws.rs.BadRequestException;
 import javax.ws.rs.NotAuthorizedException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -44,6 +45,11 @@ public class AuthServiceImpl implements AuthService {
       log.info("end login for user {} goes wrong", dto.password());
 
       throw new SecurityException(HttpStatus.BAD_REQUEST, SecurityException.LOGIN_ERROR);
+    } catch (BadRequestException ex) {
+      log.debug("Exception when login {}", dto.email(), ex);
+      log.info("email not verified");
+
+      throw new SecurityException(HttpStatus.FORBIDDEN, SecurityException.EMAIL_NOT_VERIFIED_ERROR);
     }
   }
 }

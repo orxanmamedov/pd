@@ -27,7 +27,7 @@ class AddDepositEndpointTest extends AbstractIntegrationTest {
 
   @Test
   void whenAddDeposit_thenSuccess() throws Exception {
-
+    // when
     // then
     mockMvc
         .perform(

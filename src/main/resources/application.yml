@@ -7,6 +7,7 @@ spring:
     url: jdbc:postgresql://localhost:5432/express_bank
     username: postgres
     password: postgres
+
   jpa:
     properties:
       hibernate:

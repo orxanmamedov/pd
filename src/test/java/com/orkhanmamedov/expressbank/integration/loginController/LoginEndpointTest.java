@@ -75,4 +75,27 @@ class LoginEndpointTest extends AbstractIntegrationTest {
 
     verify(authService, times(1)).login(request);
   }
+
+  @Test
+  void whenUserLoginsWithNotVerifiedEmail_thenThrowSecurityException() throws Exception {
+    // when
+    when(authService.login(request))
+        .thenThrow(
+            new SecurityException(
+                HttpStatus.FORBIDDEN, SecurityException.EMAIL_NOT_VERIFIED_ERROR));
+
+    // then
+    mockMvc
+        .perform(
+            post(LoginController.LOGIN_URL)
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(toJson(request)))
+        .andExpect(status().is4xxClientError())
+        .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+        .andExpect(status().is(HttpStatus.FORBIDDEN.value()))
+        .andExpect(jsonPath("$.message", is(SecurityException.EMAIL_NOT_VERIFIED_ERROR)))
+        .andExpect(header().doesNotExist(HttpHeaders.AUTHORIZATION));
+
+    verify(authService, times(1)).login(request);
+  }
 }

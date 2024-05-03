@@ -2,10 +2,6 @@ application:
   environment:
     name: test
 
-# Keycloak configuration
 keycloak:
   realm: express-bank-realm
 
-feign:
-  stock:
-    url: http://localhost:0/

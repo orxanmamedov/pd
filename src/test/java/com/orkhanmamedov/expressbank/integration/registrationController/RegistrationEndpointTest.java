@@ -18,7 +18,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 
-@org.junit.jupiter.api.TestInstance(TestInstance.Lifecycle.PER_CLASS)
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class RegistrationEndpointTest extends AbstractIntegrationTest {
   @ParameterizedTest
   @MethodSource("registrationTestData")
