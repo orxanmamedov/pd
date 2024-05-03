@@ -33,6 +33,13 @@ public interface LoginController {
                 @Content(
                     mediaType = MediaType.APPLICATION_JSON_VALUE,
                     schema = @Schema(implementation = MessageResponseDto.class))),
+              @ApiResponse(
+                      responseCode = "403",
+                      description = "Email is not verified",
+                      content =
+                      @Content(
+                              mediaType = MediaType.APPLICATION_JSON_VALUE,
+                              schema = @Schema(implementation = MessageResponseDto.class)))
       })
   LoginResponseDto login(LoginRequestDto dto);
 }
