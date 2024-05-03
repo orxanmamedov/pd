@@ -7,7 +7,7 @@
 
  Because i had no time for configuring reverse proxy, keycloak doesn`t allow to verify email from external hostt. So run everything beside the app from docker and in this case keycloak allows to verify email:
 1. Run keycloack, keycloak db, and postgres db from docker
-2. Run express bank app from ide or from artifact
+2. Download all necesseary dependencies and run express bank app from ide or from artifact
 
 Flow
 
